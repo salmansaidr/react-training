@@ -27,10 +27,11 @@ function TenantDetail() {
         Now {tenant?.is_open ? "Open!" : "Closed!"}
       </p>
       <h2>Our Menu</h2>
-      <Row gutter={[8, 16]}>
-        {tenant?.tenant_menu?.map((menu) => {
-          return (
-            <>
+      {tenant?.tenant_menu?.map((menu) => {
+        return (
+          <>
+            <h3 style={{ marginTop: "30px" }}>{menu?.category?.title}</h3>
+            <Row key={menu?._id} gutter={[8, 16]}>
               {menu?.menu.map((men) => {
                 return (
                   <Card
@@ -46,10 +47,10 @@ function TenantDetail() {
                   </Card>
                 );
               })}
-            </>
-          );
-        })}
-      </Row>
+            </Row>
+          </>
+        );
+      })}
     </div>
   );
 }
